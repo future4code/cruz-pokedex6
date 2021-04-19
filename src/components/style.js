@@ -17,14 +17,27 @@ export const Logo = styled.img`
   bottom: -30px;
   left:50%;
   margin-left: -30px;
+  @media (max-width: 450px){
+    display: none;
+  }
+`
+
+export const Menu = styled.div`
+  width: 30vw;
+  min-width: 300px;
+  background-color: pink;
 `
 
 export const Title = styled.img`
-width: 15em;
+width: 12em;
 padding: 20px;
+@media (max-width: 450px){
+    width: 5em;
+}
 `
 
 export const StyledButton = styled(Button)`
-width: 25%;
-font-size: 10em;
+@media (max-width: 450px){
+    background-color: pink;
+}
 `
