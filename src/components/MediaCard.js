@@ -16,25 +16,29 @@ const StyledCard = styled(Card)`
   align-items: center;
   margin: 20px;
 `
-export default function MediaCard() {
+export default function MediaCard(props) {
   return (
     <StyledCard>
       <CardActionArea>
         <CardMedia
-          image=""
-          title="Pokemon.name"
+          // image={props.image}
+          // image= {'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'}
+          title={props.name}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Pokemon
+           {props.name}
+          </Typography>
+          <Typography gutterBottom variant="h5" component="h2">
+           <img src={props.image} />
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button variant="contained" size="small" color="primary" >
+        <Button onClick={props.removePokemon} variant="contained" size="small" color="primary" >
           Remover Pokemon
         </Button>
-        <Button variant="contained" size="small" color="primary">
+        <Button onClick={props.checkPokemonDetails} variant="contained" size="small" color="primary">
           Ver Detalhes
         </Button>
       </CardActions>

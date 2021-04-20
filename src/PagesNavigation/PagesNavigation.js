@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import HomePage from '../pages/HomePage'
 import PokedexPage from '../pages/PokedexPage'
@@ -14,7 +14,7 @@ export default function PagesNavigation() {
             <Route exact path="/pokedex">
                 <PokedexPage />
             </Route>
-            <Route exact path="/details/:id">
+            <Route exact path="/details/:name">
                 <PokemonDetailsPage />
             </Route>
             <Route>
