@@ -72,7 +72,7 @@ export const PokemonInfo = (props) =>{
             <p><b>Velocidade: </b>{props.speed}</p>
         </BoxPower>
         <BoxType>
-            <h1>Tipo:</h1>
+            <h1>Tipo: {props.type}</h1>
         </BoxType>
         <BoxAttack>
             <h1>Principais Ataques</h1>
