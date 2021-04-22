@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import {usePokemonsList} from '../custom hook/usePokemonsList'
-import {usePokemonDetails} from '../custom hook/usePokemonDetails'
 import Drawer from '@material-ui/core/Drawer';
 import {HeaderContainer, StyledButton, Logo, Title, Menu, HomeContainer} from '../components/style'
 import {goToPokedex} from '../PagesNavigation/Coordinator'
@@ -47,6 +46,7 @@ export default function HomePage() {
             {pokemonsList.map((pokemon)=>{
                 return <MediaCard 
                 name={pokemon.name}
+                url={pokemon.url}
                 checkPokemonDetails = {()=>{history.push(`/details/${pokemon.name}`)}}
                 // image={`${pokemon.url}/`}
                 />
