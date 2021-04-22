@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import {usePokemonsList} from '../custom hook/usePokemonsList'
 import Drawer from '@material-ui/core/Drawer';
 import {HeaderContainer, StyledButton, Logo, Title, Menu, HomeContainer} from '../components/style'
 import {goToPokedex} from '../PagesNavigation/Coordinator'
@@ -9,29 +8,43 @@ import pokebola from '../images/pokebola.png'
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MediaCard from '../components/MediaCard'
+import {GlobalContext} from '../global/GlobalContext'
 import axios from 'axios'
 
 
 export default function HomePage() {
     const [menu, setMenu] = useState(false);
-    const [pokemonsList, setPokemonsList, getPokemonDetails] = usePokemonsList()
+    const {pokemonsList, setPokemonsList, pokedex, setPokedex} = useContext(GlobalContext)
     const history = useHistory()
 
-    // const pokemonImage = async(name) =>{
-    //     try{
-    //     let detailsOfPokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}/`)
-    //     // let pokemonImage = await axios.get(`http://pokeapi.co/media/sprites/${name}/front_default`)
-    //     return detailsOfPokemon.data.sprites.front_default
-    //     // return pokemonImage.data
-    //     }catch(error){
-    //     console.log(error)
-    //     }
-    // }
+    // useEffect(()=>{
+    //     let updatedList = [...pokemonsList]
+    //     pokedex.forEach((pokemonFromPokedex)=>{
+    //         if(updatedList.indexOf(pokemonFromPokedex)>-1){
+    //             updatedList.splice(pokemonFromPokedex, 1)
+    //         }
+    //     })
+    //     setPokemonsList(updatedList)
+    // }, [pokedex])
 
+    const addToPokedex = (name) =>{
+        let newPokedex = [...pokedex]
+        pokemonsList.forEach((pokemon)=>{
+            if(pokemon.name===name){
+                newPokedex.push(pokemon)
+            }
+        })
+        let newPokemonsList = pokemonsList.filter((pokemon)=>{
+            return pokemon.name!==name
+        })
+        setPokemonsList(newPokemonsList)
+        setPokedex(newPokedex)
+    }
+    
     return <div>
         <Drawer anchor={'left'} open={menu} onClose={()=>{setMenu(false)}}>
             <Menu>
-                <StyledButton color='primary' variant='contained' onClick={() => goToPokedex(history)}>Pokemons</StyledButton>
+                <StyledButton color='primary' variant='contained' onClick={() => goToPokedex(history)}>Minha Pokedex</StyledButton>
             </Menu>
         </Drawer>
         <HeaderContainer>
@@ -44,11 +57,11 @@ export default function HomePage() {
         </HeaderContainer>
         <HomeContainer>
             {pokemonsList.map((pokemon)=>{
-                return <MediaCard 
-                name={pokemon.name}
+                return <MediaCard
                 url={pokemon.url}
+                pageFunction = {()=>addToPokedex(pokemon.name)}
+                buttonFunction = {'Adicionar Pokemon'}
                 checkPokemonDetails = {()=>{history.push(`/details/${pokemon.name}`)}}
-                // image={`${pokemon.url}/`}
                 />
             })}
         </HomeContainer>

@@ -76,6 +76,11 @@ export const PokemonInfo = (props) =>{
         </BoxType>
         <BoxAttack>
             <h1>Principais Ataques</h1>
+            <p>{props.mainMoveA}</p>
+            <p>{props.mainMoveB}</p>
+            <p>{props.mainMoveC}</p>
+            <p>{props.mainMoveD}</p>
+            <p>{props.mainMoveE}</p>
         </BoxAttack>
 
     </GridArea>

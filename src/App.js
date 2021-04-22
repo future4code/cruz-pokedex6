@@ -1,9 +1,8 @@
 import React from 'react'
 import PagesNavigation from './PagesNavigation/PagesNavigation'
 import { ThemeProvider } from '@material-ui/core/styles';
-//import { useTheme } from '@material-ui/core/styles';
-//import {theme} from './components/Theme'
 import { createMuiTheme } from '@material-ui/core/styles';
+import PokemonProvider from './global/PokemonProvider';
 
 
 export default function App() {
@@ -25,9 +24,9 @@ export default function App() {
       },
     },
   });
-  return( 
-  <ThemeProvider theme={theme}>
-    <PagesNavigation />
-  </ThemeProvider>
-  );
+  return <PokemonProvider>
+    <ThemeProvider theme={theme}>
+      <PagesNavigation />
+    </ThemeProvider>
+  </PokemonProvider>
 }
