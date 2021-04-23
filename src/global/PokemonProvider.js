@@ -7,10 +7,11 @@ export default function PokemonProvider(props) {
     const [pokemonsList, setPokemonsList] = useState([])
     const [pokedex, setPokedex] = useState([])
 
-    useEffect(()=>{
+    useEffect(() => {
         getPokemonsFromAPI()
     }, [])
-    useEffect(()=>{
+
+    useEffect(() => {
         console.log(listFromAPI)
         setPokemonsList(listFromAPI)
     }, [listFromAPI])
@@ -24,7 +25,16 @@ export default function PokemonProvider(props) {
         }
     }
 
-    return <GlobalContext.Provider value={{ pokemonsList, setPokemonsList, pokedex, setPokedex, listFromAPI, setListFromAPI }}>
-        {props.children}
-    </GlobalContext.Provider>
+    return (
+        <GlobalContext.Provider
+            value={{
+                pokemonsList,
+                setPokemonsList,
+                pokedex,
+                setPokedex,
+                listFromAPI
+            }}>
+            {props.children}
+        </GlobalContext.Provider>
+    )
 }
