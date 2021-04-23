@@ -24,6 +24,7 @@ Na página da Pokedex, será apresentada uma lista com todos os pokemons adicion
 - **REMOVER POKEMON:** retirará o referido Pokemon da Pokedex. Caso clicado, esse botão também retornará o Pokemon à lista apresentada na Home, posicionando-o na mesma ordem na qual estava antes de ser adicionado à Pokedex;
 - **VER DETALHES:** direciona o usuário à página de detalhes com as informações deste pokemon, que será explanada posteriormente.
 - **BATALHAR:** adicionará o Pokemon a um campo de batalha, explanado a seguir.    
+
 A Pokedex também apresenta uma funcionalidade de batalha de Pokemons, por meio da qual o usuário poderá selecionar dois pokemons de sua lista particular para uma luta. Para cada Pokemon selecionado, serão somados os valores totais de pontos de vida, ataque, defesa, ataque especial, defesa especial e velocidade, todos encontrados na API utilizada. O Pokemon com maior somatória de pontos será o vencedor. Caso as pontuações se igualem, o resultado será um empate.  
 Tal campo também apresenta um botão de **ENCERRAR BATALHA**, no qual todos os Pokemons adicionados à batalha são removidos e a funcionalidade é reiniciada.  
 Ressalta-se que a batalha apenas será realizada quando o usuário selecionar dois Pokemons, estando ele impossibilitado de adicionar um terceiro Pokemon ao combate - caso tente fazê-lo, será exibido um alerta orientando-o a, antes, encerrar a atual batalha.  
