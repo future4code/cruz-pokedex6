@@ -42,8 +42,8 @@ export default function MediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button onClick={props.removePokemon} variant="contained" size="small" color="primary" >
-          Remover Pokemon
+        <Button onClick={props.pageFunction} variant="contained" size="small" color="primary" >
+        {props.buttonFunction}
         </Button>
         <Button onClick={props.checkPokemonDetails} variant="contained" size="small" color="primary">
           Ver Detalhes
